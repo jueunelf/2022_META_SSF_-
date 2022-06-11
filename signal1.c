@@ -104,7 +104,7 @@ int main(int argc, char **argv) {
         printf(".\n");
         sleep(red);
 
-        //마찬 가자리로 노란불 프로세스 에게 Turn on을 하라는
+        //마찬가지로 노란불 프로세스 에게 Turn on을 하라는
         //USER SIGNAL을 보낸다.
         kill(pid[YELLOW_LAMP], SIGUSR1);
         printf("The controller sent the signal to yellow at ");
@@ -113,14 +113,14 @@ int main(int argc, char **argv) {
         sleep(yellow);
 
         //역시 파란불 프로세스에게 Turn On을 하라는
-        //USER SIGNAL을 보내나.
+        //USER SIGNAL을 보낸다.
         kill(pid[GREEN_LAMP], SIGUSR1);
         printf("The controller sent the signal to green at ");
         prnTime();
         printf(".\n");
         sleep(green);
     }
-    //프로세스들이 모든 작업을 수행 했음으로
+    //프로세스들이 모든 작업을 수행했음으로
     //프로세스를 종료하라는 명령을 보낸다.
     for ( i = RED_LAMP ; i <= GREEN_LAMP ; i++ )
         kill(pid[i], SIGUSR2 );
@@ -139,7 +139,7 @@ void sig_handler_turn_on(int signo) {
     prnTime();
     printf(".\n");
 }
-//프로세스의 종료를 명령하는 시글널이 왔을때
+//프로세스의 종료를 명령하는 시그널이 왔을때
 //수행되는 시그널 핸들러이다.
 void sig_handler_kill(int signo) {
     //시그널을 받았다는 메세지를 남기고
@@ -154,7 +154,7 @@ void signal_lamp(int kind_of_lamp) {
 
     pid = getpid();
     //각종 램프 프로세스가 생성되면
-    //해당 인자로써 어떤 프로세스 인지 판단하고
+    //해당 인자로써 어떤 프로세스인지 판단하고
     switch (kind_of_lamp) {
     case RED_LAMP:
         strcpy(lamp_name, "red");
